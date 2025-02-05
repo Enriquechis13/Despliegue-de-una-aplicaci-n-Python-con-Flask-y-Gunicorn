@@ -1,0 +1,8 @@
+app:
+.dockerignore
+aplication.py
+Dockerfile
+wsgi.py
+
+web:
+Dockerfile
