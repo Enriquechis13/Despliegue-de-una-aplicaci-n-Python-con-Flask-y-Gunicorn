@@ -64,6 +64,10 @@ Para probar la aplicación, podemos iniciar el servidor de desarrollo de Flask y
 ```bash
 flask run --host '0.0.0.0'
 ```
+ 
+![Imagen flask](img/Captura.PNG)
+
+![Imagen flask](img/Captura2.PNG)
 
 O bien, usar Gunicorn para ejecutarla en un entorno de producción.
 
@@ -152,6 +156,8 @@ O tambien podrias intentar:
 http://www.app.izv/
 ```
 
+ ![Imagen flask](img/Captura3.PNG)
+
 # Tarea de ampliación
 
 ### Descripción
@@ -184,6 +190,8 @@ Gunicorn se inicia con el siguiente comando:
 ```bash
 gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app
 ```
+
+![Imagen flask](img/CapturaEXTRA2.PNG)
 
 ### 4. Nginx
 
