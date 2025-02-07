@@ -64,12 +64,18 @@ WantedBy=multi-user.target" | sudo tee /etc/systemd/system/flask_app.service
     sudo ln -s /etc/nginx/sites-available/emunrodb.conf /etc/nginx/sites-enabled/
     sudo nginx -t
     sudo systemctl restart nginx
+
+    # Desmarcar los comentarios para automatizar la tarea de ampliación.
+
+    # cd /var/www/
+    # sudo apt install git
+    # git clone https://github.com/Azure-Samples/msdocs-python-flask-webapp-quickstart
+    # cd msdocs-python-flask-webapp-quickstart
+
+    # pipenv shell
+    # pipenv install -r requirements.txt
+
+    # gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app
     SHELL
   end
 end
-
-# Toma nota de la ruta pues nos hará falta más adelante para crear el servicio de systemd para arrancar nuestra aplicación.
-#/usr/bin/gunicorn
-
-# Y un último detalle, Gunicorn debe iniciarse ahora así:
-# gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app
