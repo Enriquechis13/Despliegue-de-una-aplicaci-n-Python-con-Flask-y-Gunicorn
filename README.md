@@ -75,6 +75,8 @@ O bien, usar Gunicorn para ejecutarla en un entorno de producción.
 gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app
 ```
 
+![Imagen flask](img/Captura2.5.PNG)
+
 ## 5. Configuración de Gunicorn con systemd
 
 Creamos un servicio para `systemd` que permitirá gestionar Gunicorn como un proceso en segundo plano.
@@ -156,7 +158,7 @@ O tambien podrias intentar:
 http://www.app.izv/
 ```
 
- ![Imagen flask](img/Captura3.PNG)
+![Imagen flask](img/Captura3.PNG)
 
 # Tarea de ampliación
 
