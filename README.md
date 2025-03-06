@@ -21,6 +21,17 @@ Creamos el directorio de la aplicación, asignamos los permisos adecuados y conf
 mkdir -p /var/www/emunrodb
 sudo chown -R $USER:www-data /var/www/emunrodb
 sudo chmod -R 775 /var/www/emunrodb
+```
+Dentro del directorio de nuestra aplicación, creamos un archivo oculto .env que contendrá las variables de entorno necesarias. Editamos el archivo y añadimos las variables, indicando cuál es el archivo .py de la aplicación y el entorno, que en nuestro caso será producción:
+
+Contenido del fichero `/var/www/emunrodb/.env`
+
+```bash
+FLASK_APP=wsgi.py
+FLASK_ENV=production
+```
+
+```bash
 cd /var/www/emunrodb
 pipenv shell
 pipenv install flask gunicorn
@@ -67,6 +78,8 @@ flask run --host '0.0.0.0'
  
 ![Imagen flask](img/Captura.PNG)
 
+introduciendo en un navegador web: `http://IP-maq-virtual:5000` aparecerá App desplegada.
+
 ![Imagen flask](img/Captura2.PNG)
 
 O bien, usar Gunicorn para ejecutarla en un entorno de producción.
@@ -77,7 +90,21 @@ gunicorn --workers 4 --bind 0.0.0.0:5000 wsgi:app
 
 ![Imagen flask](img/Captura2.5.PNG)
 
+Todavía dentro de nuestro entorno virtual, debemos tomar nota de cual es el path o ruta desde la que se ejecuta gunicorn para poder configurar más adelante un servicio del sistema. Podemos averigurarlo así:
+
+```bash
+which gunicorn
+```
+
 ## 5. Configuración de Gunicorn con systemd
+
+Puesto que ya debemos tener instalado Nginx en nuestro sistema, lo iniciamos y comprobamos que su estado sea activo (si no lo isntalamos):
+ 
+```bash
+sudo apt install nginx
+sudo systemctl start nginx
+sudo systemctl status nginx
+```
 
 Creamos un servicio para `systemd` que permitirá gestionar Gunicorn como un proceso en segundo plano.
 
